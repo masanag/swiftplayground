@@ -1,9 +1,6 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
-
-var str = "Hello, playground"
-
 for i in 1...9 {
     var line = ""
     for j in 1...9 {
@@ -33,3 +30,39 @@ for n in 1...13 {
     }
     print(line)
 }
+
+
+//: repeat
+var i:Int = 0
+repeat {
+    print("i: \(i)")
+    i += 1
+} while (i < 10)
+
+//: guard
+func show(message: String?) {
+    guard message != nil else {
+        print("else statement")
+        return
+    }
+    print(message!)
+}
+
+show("aaaaa")
+show(nil)
+
+func method() {
+    var a = Dictionary<String,Int>()
+    a["key"] = 999
+    guard let value = a["key"] else {
+        print("nil")
+        return
+    }
+    let value2 = a["key"]
+    // value2はOptional型
+    print(value2!.toIntMax())
+    // valueはOptional型ではなくなっている!!
+    print(value.toIntMax())
+    return 
+}
+method()
