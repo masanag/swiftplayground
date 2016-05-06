@@ -304,3 +304,33 @@ let fizzBuzzTuple = (1...20).map({
     }
 })
 print(fizzBuzzTuple)
+
+func calculate(p1: Int, p2: Int, calculator: (Int, Int) -> Int) -> Int {
+    return calculator(p1, p2)
+}
+print("-----")
+print("-----")
+
+print((1...20).map({
+    (number: Int) -> String in
+    switch (number % 5, number % 3) {
+    case(0, 0):
+        return "FizzBuzz"
+    case(0, _):
+        return "Buzz"
+    case(_, 0):
+        return "Fizz"
+    default:
+        return String(number)
+    }
+}))
+
+print(numbers)
+let mappedNumers = numbers.map({ number in 3 * number })
+print(mappedNumers)
+
+print(numbers.map({ number in 1000 + number }))
+
+let sortedNumbers = numbers.sort { $0 > $1 }
+print(sortedNumbers)
+print(numbers.sort { $1 > $0 })
