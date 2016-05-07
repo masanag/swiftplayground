@@ -298,3 +298,38 @@ let threeOfSpades = Card(rank: .Three, suit: .Spades)
 let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 Card.sayHello()
 Card.fullDeck()
+
+enum ServerResponse {
+    case Result(String, String)
+    case Status(Int)
+    case Failure(String)
+}
+
+let success = ServerResponse.Result("6:00 am", "8:09 pm")
+let failure = ServerResponse.Failure("Out of cheese.")
+let status = ServerResponse.Status(404)
+
+func outputResponse(response: ServerResponse) -> String {
+    switch response {
+    case let .Result(sunrise, sunset):
+        return "Sunrise is at \(sunrise) and sunset is at \(sunset)."
+    case let .Status(status):
+        return String(status)
+    case let .Failure(message):
+        return "Failure... \(message)"
+    }
+}
+
+switch success {
+case let .Result(sunrise, sunset):
+    print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
+case let .Status(status):
+    print("Got status: \(status)")
+case let .Failure(message):
+    print("Failure... \(message)")
+}
+
+outputResponse(success)
+outputResponse(failure)
+outputResponse(status)
+
